@@ -17,8 +17,7 @@ void Shell::read() {
         cout << "$";
         string rawCommands;
         getline(cin, rawCommands);
-        int startIndex = 0;
-        // cout << "commands entered: " << rawCommands << endl;
+       // cout << "commands entered: " << rawCommands << endl;
         
      //Parse commands
       vector<string> x;
@@ -38,14 +37,14 @@ void Shell::read() {
     //     }    
     //   }
     //  //clear any empty commands (" ")
-       for(int i = 0; i < x.size(); i++) {
+       for(unsigned i = 0; i < x.size(); i++) {
            if(x.at(i) == "") {
             //   cout << "line 52" << endl;
                 x.erase(x.begin() + i);
            }    
        }
     //   cout << "printing commands" << endl;
-       for(int i = 0; i < x.size(); i++) {
+       for(unsigned i = 0; i < x.size(); i++) {
         //   cout << x.at(i) << endl;
        }
     // Clear final spaces
@@ -54,19 +53,19 @@ void Shell::read() {
     //             x.erase(x.begin() + 0);
     //   }
     //ALSO CLEAR ANY COMMANDS WITH COMMANDS, ADD THEM TO PARSER LIST?
-      for (int i = 0; i < x.size(); i++) {
+      for (unsigned i = 0; i < x.size(); i++) {
         //   cout <<"x" << endl;
           if ((x.at(i)).find('#') != string::npos) {
             //   cout << "comment found" << endl;
                 (x.at(i)).erase((x.at(i)).find('#'), x.at(i).size());
           }
       } 
-     for (int i = 0; i < x.size(); i++) {
+     for (unsigned i = 0; i < x.size(); i++) {
         //  cout << "command" << x.at(i) << endl;
         //  cout << "About to run" << endl;
          Command newC = Command(x.at(i));
         //  cout << "Times run: " << (i + 1) << endl;
-        //  queue.push_back(newC);
+         queue.push_back(newC);
      }
     //run commands, if one of the key words was exit, end program!
        // run();        
@@ -81,15 +80,15 @@ void Shell::read() {
    // }
 
 //}
-void Shell::specialExit() {
-    //possibly have the exit inside command class instead
-}
-void Shell::displayVector() {
-    // cout << "size of vector: " << queue.size() << endl;
-    // cout << "Printing commands.." << endl;
-    // for(int i = 0; i < this->queue.size(); i++) {
-    //     cout << queue.at(i) << endl;
-    // }
+// void Shell::specialExit() {
+//     //possibly have the exit inside command class instead
+// }
+// void Shell::displayVector() {
+//     // cout << "size of vector: " << queue.size() << endl;
+//     // cout << "Printing commands.." << endl;
+//     // for(int i = 0; i < this->queue.size(); i++) {
+//     //     cout << queue.at(i) << endl;
+//     // }
     
-}
+// }
     
