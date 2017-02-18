@@ -14,8 +14,8 @@ class Shell
     vector<Command> queue;
     //vector<string> testqueue;
     public:
-        Shell();
-        ~Shell();
+        //Shell();
+        //~Shell();
         void read();
         void run();
         void specialExit();
