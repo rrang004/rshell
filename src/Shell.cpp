@@ -1,12 +1,12 @@
 #include "Shell.h"
 
 //WHEN READY TO INTEGRATE TO COMMAND CLASS, CONTROL F AND REPLACE queue WITH QUEUE
-Shell::Shell() {
+//Shell::Shell() {
     //create empty vector?
-}
-Shell::~Shell() {
+//}
+//Shell::~Shell() {
     //delete each new command
-}
+//}
 //-----------------------------------------------------------------------------
 //Read Function
 //Known bug: Can enter connectors such as |&, ;|, ;&, &| and it will still parse the commands
@@ -74,13 +74,13 @@ void Shell::read() {
         // displayVector();
     }
 }
-void Shell::run() {
+//void Shell::run() {
     //call Command's run function 
-    for (int i = 0; i < queue.size(); i++) {
+  //  for (int i = 0; i < queue.size(); i++) {
         // (queue.at(i)).execute();
-    }
+   // }
 
-}
+//}
 void Shell::specialExit() {
     //possibly have the exit inside command class instead
 }
