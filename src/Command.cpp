@@ -53,7 +53,7 @@ Command::Command(string commandStr) {
     // *parameters = strtok(*parameters, " ");
     // cout << "Check6" << endl;
     pid_t pid;
-    int status;
+    // int status;
     if ((pid = fork()) < 0) {
         // cout << "Error" << endl;
         exit(1);
