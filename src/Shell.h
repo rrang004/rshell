@@ -17,8 +17,8 @@ class Shell
         //Shell();
         //~Shell();
         void read();
-        void run();
-        void specialExit();
-        void displayVector(); //for testing
+        // void run();
+        // void specialExit();
+        // void displayVector(); //for testing
     
 };
