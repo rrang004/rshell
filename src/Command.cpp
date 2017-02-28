@@ -1,7 +1,7 @@
 #include "Command.h"
 
 Command::Command(string commandStr) {
-    
+    this->isValid = true;
     //Check to see if the exit command is ran
     if (commandStr.find("exit") != string::npos) {
         exit(1);
@@ -48,6 +48,7 @@ Command::Command(string commandStr) {
         if (execvp(commandPtr[0], commandPtr) < 0) {  
             //any reason why it didn't run
             perror("Command did not execute: ");
+            this->isValid = false;
         }
     }
     else {     
