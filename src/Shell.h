@@ -11,14 +11,10 @@ using namespace std;
 class Shell
 {
     private:
-    vector<Command> queue;
-    //vector<string> testqueue;
+        vector<Command> queue;
     public:
-        //Shell();
-        //~Shell();
         void read();
-        // void run();
-        // void specialExit();
-        // void displayVector(); //for testing
+        void priorityParse(string); //For usage of ()
+        void parse(string);
     
 };
