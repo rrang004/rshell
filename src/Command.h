@@ -9,14 +9,17 @@
 #include <string.h>
 #include <fstream>
 #include <cctype>
-#include <cstring>
-#include <boost/foreach.hpp>
-#include <boost/algorithm/string.hpp>                                                                                                                                                
-#include <boost/algorithm/string/regex.hpp>                                                                                                                                          
-#include <sys/wait.h>
 using namespace std;
 
 class Command {
+    private:
+        // string paraList;
+        // const char* command;
+        // char *const parmList;
     public:
-        Command(string);
+        Command(vector<char*>);
+        // ~Command();
+        // void execute();
+        void displayCommand();
+    
 };
