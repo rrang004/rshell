@@ -3,5 +3,6 @@
 (echo A) || ls
 (ls && echo Test) && junkcommand
 (junkcommand) || (echo A)
-(junk command || echo K) || echo D
-(junk command || echo D) && echo P
+(junkcommand || echo K) || echo D
+(junkcommand || echo D) && echo P
+([ -e main.cpp ] && echo "main.cpp exists") || echo d
