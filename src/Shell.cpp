@@ -16,7 +16,7 @@ void Shell::read() {
         getline(cin, rawCommands);
         
         //Check if they entered parentheses
-        if(rawCommands[0] == '(') {
+        if (rawCommands[0] == '(') {
             priorityParse(rawCommands);
         }
         else {
@@ -44,7 +44,7 @@ void Shell::priorityParse(string commands) {
         return; 
      }
      //get connectors
-    for(unsigned i = 0; i < commands.length(); i++) {
+    for (unsigned i = 0; i < commands.length(); i++) {
         if (commands[i] == '&' && commands[i+1] == '&')
             connectors.push_back("&&");
         else if (commands[i] == '|' && commands[i+1] == '|')
@@ -124,18 +124,18 @@ void Shell::parse(string commands) {
             boost::split(x, commands, boost::is_any_of("|&;"));
      
             // Clear left spaces
-            for(unsigned i = 0; i < x.size(); i++) {
+            for (unsigned i = 0; i < x.size(); i++) {
                 boost::trim_left(x.at(i));
             }
       
             //clear right spaces
-            for(unsigned i = 0; i < x.size(); i++) {
+            for (unsigned i = 0; i < x.size(); i++) {
                 if(x.at(i)[x.at(i).size()] == ' ') {
                     boost::trim_right(x.at(i));
                 }    
             }
             //clear any empty commands (" ")
-            for(unsigned i = 0; i < x.size(); i++) {
+            for (unsigned i = 0; i < x.size(); i++) {
                 if(x.at(i) == "") {
                     x.erase(x.begin() + i);
                }    
