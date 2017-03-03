@@ -1,2 +1,2 @@
 #!/bin/bash
-exit
+echo A ;; echo B || echo C && exit
