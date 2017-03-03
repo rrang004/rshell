@@ -121,6 +121,14 @@ void Shell::priorityParse(string commands) {
 void Shell::parse(string commands) {
          //Parse commands
             vector<string> x;
+            vector<string> connectors;
+            for (unsigned i = 0; i < commands.length(); i++) {
+                if (commands[i] == '&' && commands[i+1] == '&')
+                    connectors.push_back("&&");
+                else if (commands[i] == '|' && commands[i+1] == '|')
+                    connectors.push_back("||");
+            }
+    
             boost::split(x, commands, boost::is_any_of("|&;"));
      
             // Clear left spaces
@@ -147,12 +155,28 @@ void Shell::parse(string commands) {
               }
             } 
             for (unsigned i = 0; i < x.size(); i++) {
-                if(x.at(i) == "") {
-                }
-                else {
-                    Command newC = Command(x.at(i));
-                    queue.push_back(newC);
-                }
+           if(x.at(i) == "") {
             }
+            else {
+                Command newC = Command(x.at(i));
+                queue.push_back(newC);
+            
+                if (i < connectors.size()) { //make sure you aren't exceeding total number of connectors
+                    if (connectors.at(i) == "||" && newC.isValid != false) { //commands ran correctly, don't need to proceed past ||
+                        i++;
+                    }
+                // if (newC.isValid == false && connectors.at(i) == "&&") {
+                // }
+            }
+        }
+    }
+            // for (unsigned i = 0; i < x.size(); i++) {
+            //     if(x.at(i) == "") {
+            //     }
+            //     else {
+            //         Command newC = Command(x.at(i));
+            //         queue.push_back(newC);
+            //     }
+            // }
 }
 //TEST WITH MAKE!
