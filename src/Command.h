@@ -14,10 +14,13 @@
 #include <boost/algorithm/string.hpp>                                                                                                                                                
 #include <boost/algorithm/string/regex.hpp>                                                                                                                                          
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include <time.h>
 using namespace std;
 
 class Command {
     public:
         Command(string);
         bool isValid;
+        bool filePath;
 };
