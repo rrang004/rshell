@@ -17,11 +17,16 @@ void Shell::read() {
         
         //Check if they entered parentheses
         if (rawCommands[0] == '(') {
+            cout << "priority" << endl;
             priorityParse(rawCommands);
         }
-        else {
-            parse(rawCommands);       
+        //Then check | is the only connector (pipes)
+        else if (rawCommands.find('&') == -1 && rawCommands.find(';') == -1) {
+            cout << "pipe" << endl;
+            pipeParse(rawCommands);       
         }
+        else
+            parse(rawCommands);
     }    
 }    
 //-------------------------------------------
@@ -165,18 +170,43 @@ void Shell::parse(string commands) {
                     if (connectors.at(i) == "||" && newC.isValid != false) { //commands ran correctly, don't need to proceed past ||
                         i++;
                     }
+            }
+        }
+    }
+        
+}
+
+void Shell::pipeParse(string commands) {
+    vector<string> parsedCommands;
+    vector<string> connectors;
+    boost::split(parsedCommands, commands, boost::is_any_of("|"));
+    //Find connectors
+    for (unsigned i = 0; i < commands.length(); i++) {
+                if (commands[i] == '|')
+                    connectors.push_back("&&");
+    }
+    //Trim commands
+    for (unsigned i = 0; i < parsedCommands.size(); i++) {
+       boost::trim(parsedCommands.at(i));
+    }
+    // cout << "displaying parsed commands" << endl;
+    // for (unsigned i = 0; i < parsedCommands.size(); i++) {
+        // cout << parsedCommands.at(i) << endl;
+    // }
+     for (unsigned i = 0; i < parsedCommands.size(); i++) {
+        if(parsedCommands.at(i) == "") {
+        }
+        else {
+            PipeCommand newC = PipeCommand(parsedCommands.at(i));
+            pipeQueue.push_back(newC);
+            
+            if (i < connectors.size()) { //make sure you aren't exceeding total number of connectors
+                if (connectors.at(i) == "||" && newC.isValid != false) { //commands ran correctly, don't need to proceed past ||
+                    return;
+                }
                 // if (newC.isValid == false && connectors.at(i) == "&&") {
                 // }
             }
         }
     }
-            // for (unsigned i = 0; i < x.size(); i++) {
-            //     if(x.at(i) == "") {
-            //     }
-            //     else {
-            //         Command newC = Command(x.at(i));
-            //         queue.push_back(newC);
-            //     }
-            // }
 }
-//TEST WITH MAKE!
