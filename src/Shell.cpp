@@ -21,7 +21,7 @@ void Shell::read() {
             priorityParse(rawCommands);
         }
         //Then check | is the only connector (pipes)
-        else if (rawCommands.find('&') == -1 && rawCommands.find(';') == -1) {
+        else if (rawCommands.find('&') == string::npos && rawCommands.find(';') == string::npos) {
             cout << "pipe" << endl;
             pipeParse(rawCommands);       
         }
