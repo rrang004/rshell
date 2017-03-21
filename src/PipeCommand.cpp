@@ -10,7 +10,7 @@ PipeCommand::PipeCommand (string pipeStr) {
     string command;
     string parameters;
     string parameters2;
-    if (pipeStr.find(">>") != -1) {
+    if (pipeStr.find(">>") != string::npos) {
        command = pipeStr.substr(0,pipeStr.find(">>"));
     //   cout << "Command = " << command << endl;
        parameters = pipeStr.substr(0, pipeStr.find(">>") - 1);
@@ -45,7 +45,7 @@ PipeCommand::PipeCommand (string pipeStr) {
         fileOut2 << copy;
         }
     }
-    else if (pipeStr.find("<") != -1) {
+    else if (pipeStr.find("<") != string::npos) {
        command = pipeStr.substr(0,pipeStr.find("<"));
     //   cout << "Command = " << command << endl;
        parameters = pipeStr.substr(0, pipeStr.find("<") - 1);
@@ -56,7 +56,7 @@ PipeCommand::PipeCommand (string pipeStr) {
        boost::trim(parameters2);
        //**FIX Will it always be cat to read files to buffer? file < file?
        //Find file name location
-       int size1 = (pipeStr.find(" ") - 1);
+    //   int size1 = (pipeStr.find(" ") - 1);
        
        //Put file contents to buffer
        if (pipeStr.substr(0,3) == "cat") {
@@ -85,7 +85,7 @@ PipeCommand::PipeCommand (string pipeStr) {
             }
             strcpy(buffer, toBuffer.c_str());
             
-        int j = 0;
+        unsigned j = 0;
         // cout << "Conatins: ";
         while (j <= strlen(this->buffer) ) {
            cout << buffer[j];
@@ -141,7 +141,7 @@ PipeCommand::PipeCommand (string pipeStr) {
        }
        
     // }
-    else if (pipeStr.find(">") != -1) {
+    else if (pipeStr.find(">") != string::npos) {
        command = pipeStr.substr(0,pipeStr.find(">"));
     //   cout << "Command = " << command << endl;
        parameters = pipeStr.substr(0, pipeStr.find(">") - 1);
@@ -251,7 +251,7 @@ PipeCommand::PipeCommand (string pipeStr) {
         // cout << "Made new buffer" << endl;
         //Close file
         pclose(bufferFile);
-        int j = 0;
+        unsigned j = 0;
         // cout << "Conatins: ";
         while (j <= strlen(this->buffer) ) {
            cout << buffer[j];
